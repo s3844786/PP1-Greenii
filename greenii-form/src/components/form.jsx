@@ -9,6 +9,7 @@ class Form extends Component {
     phoneNo: "",
     emailAddress: "",
     returnCompany: "amazon",
+    otherReturnCompany: "",
     deliveryTime: "9am-10am",
     contactType: "email",
     productType: "",
@@ -37,6 +38,8 @@ class Form extends Component {
         this.state.emailAddress +
         "\nReturn company: " +
         this.state.returnCompany +
+        "\nOther return company: " +
+        this.state.otherReturnCompany +
         "\nProduct return type: " +
         this.state.productType +
         "\nContact type: " +
@@ -113,7 +116,7 @@ class Form extends Component {
             />
           </div>
           <h3>Package Information</h3>
-          <div className="form-group">
+          <div className="col-md-6">
             <label className="control-label">Returning company</label>
             <select
               className="form-control"
@@ -127,6 +130,23 @@ class Form extends Component {
               <option value="newegg">Newegg</option>
               <option value="other">Other</option>
             </select>
+          </div>
+          <div className="col-md-6">
+            {this.state.returnCompany === "other" ? (
+              <React.Fragment>
+                <label className="form-label">Please specify</label>
+                <input
+                  className="form-control"
+                  type="text"
+                  name="otherReturnCompany"
+                  value={this.state.otherReturnCompany}
+                  onChange={this.onChange}
+                  placeholder="Amazon"
+                />
+              </React.Fragment>
+            ) : (
+              ""
+            )}
           </div>
           <div className="col-md-6">
             <label className="form-label">Time of delivery</label>

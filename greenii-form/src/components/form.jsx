@@ -77,6 +77,7 @@ class Form extends Component {
               name="name"
               value={this.state.name}
               onChange={this.onChange}
+              placeholder="John Doe"
             />
           </div>
           <div className="col-md-6">
@@ -87,6 +88,7 @@ class Form extends Component {
               name="address"
               value={this.state.address}
               onChange={this.onChange}
+              placeholder=" 12 Street Suburb Postcode"
             />
           </div>
           <div className="col-md-6">
@@ -97,6 +99,7 @@ class Form extends Component {
               name="phoneNo"
               value={this.state.phoneNo}
               onChange={this.onChange}
+              placeholder="0123 456 789"
             />
           </div>
           <div className="col-md-6">
@@ -161,6 +164,7 @@ class Form extends Component {
               type="text"
               value={this.state.productType}
               onChange={(e) => this.setState({ productType: e.target.value })}
+              placeholder="Headphones"
             />
           </div>
           <div className="col-md-4">

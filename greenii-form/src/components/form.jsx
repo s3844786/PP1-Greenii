@@ -67,9 +67,9 @@ class Form extends Component {
     return (
       <div className="container">
         <h2 align="center">Return order form</h2>
-        <form onSubmit={this.handleSubmit} className="col-md-12">
+        <form className="row g-3" onSubmit={this.handleSubmit}>
           <h3>Personal Information</h3>
-          <div className="form-group">
+          <div className="col-md-6">
             <label className="control-label">Name </label>
             <input
               className="form-control"
@@ -79,8 +79,7 @@ class Form extends Component {
               onChange={this.onChange}
             />
           </div>
-
-          <div className="form-group">
+          <div className="col-md-6">
             <label className="control-label">Address</label>
             <input
               className="form-control"
@@ -90,8 +89,7 @@ class Form extends Component {
               onChange={this.onChange}
             />
           </div>
-
-          <div className="form-group">
+          <div className="col-md-6">
             <label className="control-label">Phone number </label>
             <input
               className="form-control"
@@ -101,8 +99,7 @@ class Form extends Component {
               onChange={this.onChange}
             />
           </div>
-
-          <div className="form-group">
+          <div className="col-md-6">
             <label className="control-label">Email address </label>
             <input
               className="form-control"
@@ -111,8 +108,7 @@ class Form extends Component {
               value={this.state.emailAddress}
               onChange={this.onChange}
             />
-          </div> <br/>
-
+          </div>
           <h3>Package Information</h3>
           <div className="form-group">
             <label className="control-label">Returning company</label>
@@ -129,8 +125,7 @@ class Form extends Component {
               <option value="other">Other</option>
             </select>
           </div>
-
-          <div className="form-group">
+          <div className="col-md-6">
             <label className="form-label">Time of delivery</label>
             <select
               className="form-control"
@@ -147,8 +142,7 @@ class Form extends Component {
               <option value="4pm-5pm">4pm - 5pm</option>
             </select>
           </div>
-
-          <div className="form-group">
+          <div className="col-md-6">
             <label className="form-label">Delivery contact via</label>
             <select
               className="form-control"
@@ -158,10 +152,9 @@ class Form extends Component {
               <option value="email">Email</option>
               <option value="phone">Phone</option>
             </select>
-          </div> <br/>
-
+          </div>
           <h3>Product information</h3>
-          <div className="form-group">
+          <div className="col-md-4">
             <label className="form-label">Product return type</label>
             <input
               className="form-control"
@@ -170,8 +163,7 @@ class Form extends Component {
               onChange={(e) => this.setState({ productType: e.target.value })}
             />
           </div>
-
-          <div className="form-group">
+          <div className="col-md-4">
             <label className="form-label">
               Please select relevant measurement unit
             </label>
@@ -187,8 +179,7 @@ class Form extends Component {
               <option value="inch">inch</option>
             </select>
           </div>
-
-          <div className="form-group">
+          <div className="col-md-4">
             <label className="form-label">
               Please select relevant weight unit
             </label>
@@ -202,8 +193,7 @@ class Form extends Component {
               <option value="lbs">lbs</option>
             </select>
           </div>
-
-          <div className="form-group">
+          <div className="col-md-3">
             <label className="form-label">
               Length of product({this.state.measurementType})
             </label>
@@ -215,8 +205,7 @@ class Form extends Component {
               onChange={(e) => this.setState({ productLength: e.target.value })}
             />
           </div>
-
-          <div className="form-group">
+          <div className="col-md-3">
             <label className="form-label">
               Width of product({this.state.measurementType})
             </label>
@@ -228,8 +217,7 @@ class Form extends Component {
               onChange={(e) => this.setState({ productWidth: e.target.value })}
             />
           </div>
-
-          <div className="form-group">
+          <div className="col-md-3">
             <label className="form-label">
               Height of product({this.state.measurementType})
             </label>
@@ -241,8 +229,7 @@ class Form extends Component {
               onChange={(e) => this.setState({ productHeight: e.target.value })}
             />
           </div>
-
-          <div className="form-group">
+          <div className="col-md-3">
             <label className="form-label">
               Weight of product({this.state.weightType})
             </label>
@@ -253,7 +240,7 @@ class Form extends Component {
               value={this.state.productWeight}
               onChange={(e) => this.setState({ productWeight: e.target.value })}
             />
-          </div> <br/>
+          </div>
 
           <input className="btn btn-primary" type="submit" value="Submit" />
         </form>

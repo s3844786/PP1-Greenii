@@ -133,8 +133,8 @@ class Form extends Component {
           </div>
           <div className="col-md-6">
             {this.state.returnCompany === "other" ? (
-              <React.Fragment>
-                <label className="form-label">Please specify</label>
+              <div>
+                <label className="control-label">Please specify</label>
                 <input
                   className="form-control"
                   type="text"
@@ -143,7 +143,7 @@ class Form extends Component {
                   onChange={this.onChange}
                   placeholder="Amazon"
                 />
-              </React.Fragment>
+              </div>
             ) : (
               ""
             )}

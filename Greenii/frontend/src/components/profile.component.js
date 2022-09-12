@@ -34,16 +34,16 @@ export default class Profile extends Component {
         <div>
         <header className="jumbotron">
           <h3>
-            <strong>{currentIdentity.username} , The role is {currentIdentity.roles} </strong>
+{/* ÷           <strong>{currentIdentity.username} , The role is {currentIdentity.roles} </strong> */}
           </h3>
         </header>
         <p>
           <strong>Id:</strong>{" "}
-          {currentIdentity.id}
+          {/* {currentIdentity.id} */}
         </p>
         <p>
           <strong>Email:</strong>{" "}
-          {currentIdentity.email}
+          {/* {currentIdentity.email} */}
         </p>
 
       </div>: null}

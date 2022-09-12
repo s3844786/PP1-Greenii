@@ -80,6 +80,7 @@ class ReturnForm extends Component {
               value={this.state.name}
               onChange={this.onChange}
               placeholder="John Doe"
+              required
             />
           </div>
           <div className="col-md-6">
@@ -91,6 +92,7 @@ class ReturnForm extends Component {
               value={this.state.address}
               onChange={this.onChange}
               placeholder=" 12 Street, Suburb, Postcode"
+              required
             />
           </div>
           <div className="col-md-6">
@@ -102,6 +104,7 @@ class ReturnForm extends Component {
               value={this.state.phoneNo}
               onChange={this.onChange}
               placeholder="0123 456 789"
+              required
             />
           </div>
           <div className="col-md-6">
@@ -112,6 +115,7 @@ class ReturnForm extends Component {
               name="emailAddress"
               value={this.state.emailAddress}
               onChange={this.onChange}
+              required
             />
           </div>
           <h3 className="col-md-12">Package Information</h3>
@@ -184,6 +188,7 @@ class ReturnForm extends Component {
               value={this.state.productType}
               onChange={(e) => this.setState({ productType: e.target.value })}
               placeholder="Headphones"
+              required
             />
           </div>
           <div className="col-md-4">
@@ -226,6 +231,7 @@ class ReturnForm extends Component {
               min="0"
               value={this.state.productLength}
               onChange={(e) => this.setState({ productLength: e.target.value })}
+              required
             />
           </div>
           <div className="col-md-3">
@@ -238,6 +244,7 @@ class ReturnForm extends Component {
               min="0"
               value={this.state.productWidth}
               onChange={(e) => this.setState({ productWidth: e.target.value })}
+              required
             />
           </div>
           <div className="col-md-3">
@@ -250,6 +257,7 @@ class ReturnForm extends Component {
               min="0"
               value={this.state.productHeight}
               onChange={(e) => this.setState({ productHeight: e.target.value })}
+              required
             />
           </div>
           <div className="col-md-3">
@@ -262,6 +270,7 @@ class ReturnForm extends Component {
               min="0"
               value={this.state.productWeight}
               onChange={(e) => this.setState({ productWeight: e.target.value })}
+              required
             />
           </div>
           <div className="col-md-12">

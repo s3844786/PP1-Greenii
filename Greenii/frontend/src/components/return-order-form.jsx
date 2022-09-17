@@ -4,7 +4,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 class ReturnForm extends Component {
   state = {
     name: "",
-    address: "",
+    street: "",
+    streetNo: "",
+    suburb: "",
+    postcode: "",
     phoneNo: "",
     emailAddress: "",
     returnCompany: "amazon",
@@ -18,6 +21,8 @@ class ReturnForm extends Component {
     productWidth: 0,
     productHeight: 0,
     productWeight: 0,
+    wantBox: "no",
+    wantLabel: "no",
   };
 
   constructor(props) {
@@ -30,7 +35,7 @@ class ReturnForm extends Component {
       "Name: " +
         this.state.name +
         "\nAddress: " +
-        this.state.address +
+        this.state.streetNo + " " + this.state.street + " " + this.state.suburb + " " + this.state.postcode + 
         "\nPhone no: " +
         this.state.phoneNo +
         "\nEmail address: " +
@@ -54,7 +59,11 @@ class ReturnForm extends Component {
         "\nProduct height: " +
         this.state.productHeight +
         "\nProduct weight: " +
-        this.state.productWeight
+        this.state.productWeight +
+        "\nDo you want box? " +
+        this.state.wantBox + 
+        "\nDo you want label? " + 
+        this.state.wantLabel
     );
     event.preventDefault();
   }
@@ -84,18 +93,6 @@ class ReturnForm extends Component {
             />
           </div>
           <div className="col-md-6">
-            <label className="control-label">Address</label>
-            <input
-              className="form-control"
-              type="text"
-              name="address"
-              value={this.state.address}
-              onChange={this.onChange}
-              placeholder=" 12 Street, Suburb, Postcode"
-              required
-            />
-          </div>
-          <div className="col-md-6">
             <label className="control-label">Phone number </label>
             <input
               className="form-control"
@@ -104,6 +101,54 @@ class ReturnForm extends Component {
               value={this.state.phoneNo}
               onChange={this.onChange}
               placeholder="0123 456 789"
+              required
+            />
+          </div>
+          <div className="col-md-3">
+            <label className="control-label">Street</label>
+            <input
+              className="form-control"
+              type="text"
+              name="street"
+              value={this.state.street}
+              onChange={this.onChange}
+              placeholder="Hello Street"
+              required
+            />
+          </div>
+          <div className="col-md-3">
+            <label className="control-label">Street no.</label>
+            <input
+              className="form-control"
+              type="text"
+              name="streetNo"
+              value={this.state.streetNo}
+              onChange={this.onChange}
+              placeholder=" 12"
+              required
+            />
+          </div>
+          <div className="col-md-3">
+            <label className="control-label">Suburb</label>
+            <input
+              className="form-control"
+              type="text"
+              name="suburb"
+              value={this.state.suburb}
+              onChange={this.onChange}
+              placeholder="Melbourne"
+              required
+            />
+          </div>
+          <div className="col-md-3">
+            <label className="control-label">Postcode</label>
+            <input
+              className="form-control"
+              type="text"
+              name="postcode"
+              value={this.state.postcode}
+              onChange={this.onChange}
+              placeholder=" 0000"
               required
             />
           </div>
@@ -272,6 +317,28 @@ class ReturnForm extends Component {
               onChange={(e) => this.setState({ productWeight: e.target.value })}
               required
             />
+          </div>
+          <div className="col-md-6">
+            <label className="form-label">Do you want a box?</label>
+            <select
+              className="form-control"
+              id="wantBox"
+              onChange={(e) => this.setState({ contactType: e.target.value })}
+            >
+              <option value="no">No</option>
+              <option value="yes">Yes</option>
+            </select>
+          </div>
+          <div className="col-md-6">
+            <label className="form-label">Do you want a label for return?</label>
+            <select
+              className="form-control"
+              id="wantLabel"
+              onChange={(e) => this.setState({ contactType: e.target.value })}
+            >
+              <option value="no">No</option>
+              <option value="yes">Yes</option>
+            </select>
           </div>
           <div className="col-md-12">
             <input className="btn btn-primary" type="submit" value="Submit" />

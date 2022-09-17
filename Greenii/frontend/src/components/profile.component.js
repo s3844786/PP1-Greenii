@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
+// import { Redirect } from "react-router-dom";
 import AuthService from "../services/auth.service";
 
 export default class Profile extends Component {
@@ -11,6 +11,7 @@ export default class Profile extends Component {
   };
 
   componentDidMount() {
+    console.log(AuthService.getCurrentRole)
     const role = AuthService.getCurrentRole();
     if(role === 'user'){
       this.setState( {currentIdentity : AuthService.getCurrentUser() });
@@ -26,7 +27,7 @@ export default class Profile extends Component {
     //   return <Redirect to={this.state.redirect} />
     // }
 
-    const { currentIdentity } = this.state;
+    // const { currentIdentity } = this.state;
 
     return (
       <div className="container">
@@ -34,6 +35,7 @@ export default class Profile extends Component {
         <div>
         <header className="jumbotron">
           <h3>
+            {this.state.currentIdentity}
 {/* ÷           <strong>{currentIdentity.username} , The role is {currentIdentity.roles} </strong> */}
           </h3>
         </header>

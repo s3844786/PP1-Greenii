@@ -1,4 +1,4 @@
-import { List, Button, Skeleton } from 'antd';
+import { List, Skeleton } from 'antd';
 import React, {Component} from "react";
 import AuthService from "../services/auth.service";
 

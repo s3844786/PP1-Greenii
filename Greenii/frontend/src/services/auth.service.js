@@ -11,8 +11,10 @@ class AuthService {
         password
       })
       .then(response => {
+        console.log("user signed in");
         if (response.data.accessToken) {
           if (response.data.roles[0] === 'ROLE_USER'){
+            console.log("user role");
             localStorage.setItem("user", JSON.stringify(response.data));
             localStorage.setItem("role","user");
           }else if(response.data.roles[0] === 'ROLE_DRIVER'){
@@ -20,7 +22,6 @@ class AuthService {
             localStorage.setItem("role","driver")
           }
         }
-
         return response.data;
       });
   }

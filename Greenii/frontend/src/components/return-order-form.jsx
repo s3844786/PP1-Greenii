@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import axios from "axios";
 
 class ReturnForm extends Component {
   state = {
@@ -23,6 +24,7 @@ class ReturnForm extends Component {
     productWeight: 0,
     wantBox: "no",
     wantLabel: "no",
+    selectedFile: null,
   };
 
   constructor(props) {
@@ -35,7 +37,13 @@ class ReturnForm extends Component {
       "Name: " +
         this.state.name +
         "\nAddress: " +
-        this.state.streetNo + " " + this.state.street + " " + this.state.suburb + " " + this.state.postcode + 
+        this.state.streetNo +
+        " " +
+        this.state.street +
+        " " +
+        this.state.suburb +
+        " " +
+        this.state.postcode +
         "\nPhone no: " +
         this.state.phoneNo +
         "\nEmail address: " +
@@ -61,9 +69,11 @@ class ReturnForm extends Component {
         "\nProduct weight: " +
         this.state.productWeight +
         "\nDo you want box? " +
-        this.state.wantBox + 
-        "\nDo you want label? " + 
-        this.state.wantLabel
+        this.state.wantBox +
+        "\nDo you want label? " +
+        this.state.wantLabel +
+        "\nLabel name " +
+        this.state.selectedFile.name
     );
     event.preventDefault();
   }
@@ -72,6 +82,43 @@ class ReturnForm extends Component {
     this.setState({
       [e.target.name]: e.target.value,
     });
+  };
+
+  onFileChange = (event) => {
+    // Update the state
+    this.setState({ selectedFile: event.target.files[0] });
+  };
+
+  onFileUpload = () => {
+    const formData = new FormData();
+
+    formData.append(
+      "myFile",
+      this.state.selectedFile,
+      this.state.selectedFile.name
+    );
+
+    console.log(this.state.selectedFile);
+
+    // Request made to the backend API
+    // axios.post("api/uploadfile", formData);
+  };
+
+  fileData = () => {
+    if (this.state.selectedFile) {
+      return (
+        <div>
+          <p>File Name: {this.state.selectedFile.name}</p>
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <br />
+          <h4>Choose before Pressing the Upload button</h4>
+        </div>
+      );
+    }
   };
 
   render() {
@@ -117,14 +164,15 @@ class ReturnForm extends Component {
             />
           </div>
           <div className="col-md-3">
-            <label className="control-label">Street no.</label>
+            <label className="control-label">Street number</label>
             <input
               className="form-control"
-              type="text"
+              type="number"
               name="streetNo"
               value={this.state.streetNo}
               onChange={this.onChange}
               placeholder=" 12"
+              min="0"
               required
             />
           </div>
@@ -330,7 +378,9 @@ class ReturnForm extends Component {
             </select>
           </div>
           <div className="col-md-6">
-            <label className="form-label">Do you want a label for return?</label>
+            <label className="form-label">
+              Do you want a label for return?
+            </label>
             <select
               className="form-control"
               id="wantLabel"
@@ -339,6 +389,12 @@ class ReturnForm extends Component {
               <option value="no">No</option>
               <option value="yes">Yes</option>
             </select>
+          </div>
+          <div className="col-md-4">
+            <label className="form-label">
+              Upload packaging label file here
+            </label>
+            <input type="file" onChange={this.onFileChange} />
           </div>
           <div className="col-md-12">
             <input className="btn btn-primary" type="submit" value="Submit" />

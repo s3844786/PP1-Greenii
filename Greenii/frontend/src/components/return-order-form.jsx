@@ -5,10 +5,12 @@ import axios from "axios";
 class ReturnForm extends Component {
   state = {
     name: "",
-    street: "",
+    unitApartment: "",
     streetNo: "",
-    suburb: "",
+    street: "",
+    province: "",
     postcode: "",
+    country: "",
     phoneNo: "",
     emailAddress: "",
     returnCompany: "amazon",
@@ -25,6 +27,7 @@ class ReturnForm extends Component {
     wantBox: "no",
     wantLabel: "no",
     selectedFile: null,
+    amountReturnPay: 0,
   };
 
   constructor(props) {
@@ -36,29 +39,31 @@ class ReturnForm extends Component {
     alert(
       "Name: " +
         this.state.name +
-        "\nAddress: " +
+        "\nUnit/Apartment: " +
+        this.state.unitApartment +
+        "\nStreet number: " +
         this.state.streetNo +
-        " " +
+        "\n Street name: " +
         this.state.street +
-        " " +
-        this.state.suburb +
-        " " +
+        "\nProvince/State: " +
+        this.state.province +
+        "\nPostcode: " +
         this.state.postcode +
-        "\nPhone no: " +
-        this.state.phoneNo +
-        "\nEmail address: " +
+        "\nCountry: " +
+        this.state.country +
+        "\nEmail: " +
         this.state.emailAddress +
         "\nReturn company: " +
         this.state.returnCompany +
-        "\nOther return company: " +
-        this.state.otherReturnCompany +
-        "\nProduct return type: " +
-        this.state.productType +
+        "\nDelivery time: " +
+        this.state.deliveryTime +
         "\nContact type: " +
         this.state.contactType +
-        "\nPreferred unit for measurement: " +
+        "\nProduct type: " +
+        this.state.productType +
+        "\nMeasurement type: " +
         this.state.measurementType +
-        "\nPreferred unit for weight: " +
+        "\nWeight type: " +
         this.state.weightType +
         "\nProduct length: " +
         this.state.productLength +
@@ -68,12 +73,14 @@ class ReturnForm extends Component {
         this.state.productHeight +
         "\nProduct weight: " +
         this.state.productWeight +
-        "\nDo you want box? " +
+        "\nDo you want a box?: " +
         this.state.wantBox +
-        "\nDo you want label? " +
+        "\nDo you want a label?: " +
         this.state.wantLabel +
-        "\nLabel name " +
-        this.state.selectedFile.name
+        "\nSelected file name: " +
+        this.state.selectedFile +
+        "\nSelected file name: " +
+        this.state.selectedFile
     );
     event.preventDefault();
   }
@@ -152,18 +159,6 @@ class ReturnForm extends Component {
             />
           </div>
           <div className="col-md-3">
-            <label className="control-label">Street</label>
-            <input
-              className="form-control"
-              type="text"
-              name="street"
-              value={this.state.street}
-              onChange={this.onChange}
-              placeholder="Hello Street"
-              required
-            />
-          </div>
-          <div className="col-md-3">
             <label className="control-label">Street number</label>
             <input
               className="form-control"
@@ -177,12 +172,24 @@ class ReturnForm extends Component {
             />
           </div>
           <div className="col-md-3">
-            <label className="control-label">Suburb</label>
+            <label className="control-label">Street</label>
             <input
               className="form-control"
               type="text"
-              name="suburb"
-              value={this.state.suburb}
+              name="street"
+              value={this.state.street}
+              onChange={this.onChange}
+              placeholder="Hello Street"
+              required
+            />
+          </div>
+          <div className="col-md-3">
+            <label className="control-label">Province/State</label>
+            <input
+              className="form-control"
+              type="text"
+              name="province"
+              value={this.state.province}
               onChange={this.onChange}
               placeholder="Melbourne"
               required
@@ -200,8 +207,33 @@ class ReturnForm extends Component {
               required
             />
           </div>
-          <div className="col-md-6">
-            <label className="control-label">Email address </label>
+          <div className="col-md-4">
+            <label className="control-label">
+              Unit/Apartment (Leave blank if doesn't apply)
+            </label>
+            <input
+              className="form-control"
+              type="text"
+              name="unitApartment"
+              value={this.state.unitApartment}
+              onChange={this.onChange}
+              required
+            />
+          </div>
+          <div className="col-md-4">
+            <label className="control-label">Country</label>
+            <input
+              className="form-control"
+              type="text"
+              name="country"
+              value={this.state.country}
+              onChange={this.onChange}
+              placeholder="Australia"
+              required
+            />
+          </div>
+          <div className="col-md-4">
+            <label className="control-label">Email address</label>
             <input
               className="form-control"
               type="text"
@@ -245,7 +277,7 @@ class ReturnForm extends Component {
             )}
           </div>
           <div className="col-md-6">
-            <label className="form-label">Time of delivery</label>
+            <label className="form-label">Pickup time</label>
             <select
               className="form-control"
               id="deliveryTimes"
@@ -390,11 +422,27 @@ class ReturnForm extends Component {
               <option value="yes">Yes</option>
             </select>
           </div>
-          <div className="col-md-4">
+          <div className="col-md-12">
             <label className="form-label">
               Upload packaging label file here
             </label>
             <input type="file" onChange={this.onFileChange} />
+          </div>
+          <div className="col-md-6">
+            <label className="control-label">
+              Cost of return package (If return package isn't free)
+            </label>
+            <input
+              className="form-control"
+              type="number"
+              name="amountReturnPay"
+              value={this.state.amountReturnPay}
+              onChange={this.onChange}
+              placeholder="0"
+              min="0"
+              required
+            />
+            <button type="button">Pay amount</button>
           </div>
           <div className="col-md-12">
             <input className="btn btn-primary" type="submit" value="Submit" />

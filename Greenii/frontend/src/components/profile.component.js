@@ -6,20 +6,20 @@ export default class Profile extends Component {
   state = {
     redirect: null,
     Ready: false,
-    currentIdentity: null
+    currentIdentity: null,
     // currentUser: { username:  "" , roles : ""}
   };
 
   componentDidMount() {
-    console.log(AuthService.getCurrentRole)
+    console.log(AuthService.getCurrentRole);
     const role = AuthService.getCurrentRole();
-    if(role === 'user'){
-      this.setState( {currentIdentity : AuthService.getCurrentUser() });
-    }else if (role === 'driver'){
-      this.setState( {currentIdentity : AuthService.getCurrentDriver() });
+    if (role === "user") {
+      this.setState({ currentIdentity: AuthService.getCurrentUser() });
+    } else if (role === "driver") {
+      this.setState({ currentIdentity: AuthService.getCurrentDriver() });
     }
 
-    this.setState({ Ready: true })
+    this.setState({ Ready: true });
   }
 
   render() {
@@ -27,28 +27,29 @@ export default class Profile extends Component {
     //   return <Redirect to={this.state.redirect} />
     // }
 
-    // const { currentIdentity } = this.state;
+    const { currentIdentity } = this.state;
 
     return (
       <div className="container">
-        {(this.state.Ready) ?
-        <div>
-        <header className="jumbotron">
-          <h3>
-            {this.state.currentIdentity}
-{/* ÷           <strong>{currentIdentity.username} , The role is {currentIdentity.roles} </strong> */}
-          </h3>
-        </header>
-        <p>
-          <strong>Id:</strong>{" "}
-          {/* {currentIdentity.id} */}
-        </p>
-        <p>
-          <strong>Email:</strong>{" "}
-          {/* {currentIdentity.email} */}
-        </p>
-
-      </div>: null}
+        {this.state.Ready ? (
+          <div>
+            <header className="jumbotron">
+              <h3>
+                {this.state.currentIdentity}÷{" "}
+                <strong>
+                  {currentIdentity.username} , The role is{" "}
+                  {currentIdentity.roles}{" "}
+                </strong>
+              </h3>
+            </header>
+            <p>
+              <strong>Id:</strong> {currentIdentity.id}
+            </p>
+            <p>
+              <strong>Email:</strong> {currentIdentity.email}
+            </p>
+          </div>
+        ) : null}
       </div>
     );
   }

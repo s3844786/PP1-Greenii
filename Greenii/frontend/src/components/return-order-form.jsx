@@ -43,7 +43,7 @@ class ReturnForm extends Component {
         this.state.unitApartment +
         "\nStreet number: " +
         this.state.streetNo +
-        "\n Street name: " +
+        "\nStreet name: " +
         this.state.street +
         "\nProvince/State: " +
         this.state.province +
@@ -55,6 +55,8 @@ class ReturnForm extends Component {
         this.state.emailAddress +
         "\nReturn company: " +
         this.state.returnCompany +
+        "\nOther return company: " +
+        this.state.otherReturnCompany +
         "\nDelivery time: " +
         this.state.deliveryTime +
         "\nContact type: " +
@@ -147,14 +149,17 @@ class ReturnForm extends Component {
             />
           </div>
           <div className="col-md-6">
-            <label className="control-label">Phone number </label>
+            <label className="control-label">
+              Phone number (Format: 012-345-6789)
+            </label>
             <input
               className="form-control"
-              type="text"
+              type="tel"
               name="phoneNo"
               value={this.state.phoneNo}
               onChange={this.onChange}
-              placeholder="0123 456 789"
+              placeholder="012-345-6789"
+              pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
               required
             />
           </div>
@@ -217,7 +222,6 @@ class ReturnForm extends Component {
               name="unitApartment"
               value={this.state.unitApartment}
               onChange={this.onChange}
-              required
             />
           </div>
           <div className="col-md-4">
@@ -270,6 +274,7 @@ class ReturnForm extends Component {
                   value={this.state.otherReturnCompany}
                   onChange={this.onChange}
                   placeholder="Amazon"
+                  required
                 />
               </div>
             ) : (

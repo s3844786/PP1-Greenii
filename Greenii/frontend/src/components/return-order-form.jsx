@@ -240,7 +240,7 @@ class ReturnForm extends Component {
             <label className="control-label">Email address</label>
             <input
               className="form-control"
-              type="text"
+              type="email"
               name="emailAddress"
               value={this.state.emailAddress}
               onChange={this.onChange}
